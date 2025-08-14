@@ -54,7 +54,15 @@ def test_exclude_ignores_matching_files(tmp_path: Path) -> None:
     assert len(data) == 1
 
 
+
 def test_exclude_ignores_matching_files_recursive(tmp_path: Path) -> None:
+    """
+    Tests that DirectoryLoader correctly excludes files matching recursive glob patterns.
+    
+    Args:
+        tmp_path: Temporary directory path for test files.
+    """
+
     txt_file = tmp_path / "test.txt"
     py_file = tmp_path / "test.py"
     txt_file.touch()
