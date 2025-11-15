@@ -1,7 +1,7 @@
 import concurrent
+import fnmatch
 import logging
 import random
-import fnmatch
 from pathlib import Path
 from typing import Any, Callable, Iterator, List, Optional, Sequence, Tuple, Type, Union
 
@@ -142,7 +142,11 @@ class DirectoryLoader(BaseLoader):
         items = [
             path
             for path in paths
-            if not (self.exclude and any(fnmatch.fnmatch(path.as_posix(), glob) for glob in self.exclude))
+            if not (
+                self.exclude 
+                and 
+                any(fnmatch.fnmatch(path.as_posix(), glob) for glob in self.exclude)
+                )
             and path.is_file()
         ]
 
